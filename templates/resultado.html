@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  <h2 class="display-1">
+    <div class="p-3 mb-2 bg-info text-white">{{ titulo }}
+      <h3 class="text-muted">Resultados de la busqueda</h2>
+    </div>
+  </h2>
+  <center>
+  <br>
+  <h1>Resultados</h1>
+  <br>
+  <table border="1">
+         {% if exito == 1 %}
+             <h1>Hola mundo</h1>
+         
+         <tr>
+             <td><center><b><h2>Títulos</h2></b></center></td>
+             <td><center><b><h2>Rankin</h2></b></center></td>
+         <tr>
+          {% for a in la_frase %}
+      <tr>
+          {% for b in a[0] %}
+          <td><h4>{{ b }}</h4></td>
+          {% endfor %}
+          {% for c in a[1] %}
+          <td><h4>{{ c }}</h4></td>
+          {% endfor %}
+      </tr>
+          {% endfor %}
+          {% endif %}
+          {% if exito == 0 %}
+          <center><h2>No pudimos encontrar tus titulos</h2></center>
+          {% endif %}
+  </table>
+</center>
+{% endblock %}
