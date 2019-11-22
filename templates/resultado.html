@@ -11,25 +11,37 @@
   <br>
   <h1>Resultados</h1>
   <br>
+  
+  
+  {% if exito == 1 %}
   <table border="1">
-         {% if exito == 1 %}
-             <h1>Hola mundo</h1>
-         
-         <tr>
-             <td><center><b><h2>Títulos</h2></b></center></td>
-             <td><center><b><h2>Rankin</h2></b></center></td>
-         <tr>
-          {% for a in la_frase %}
       <tr>
-          {% for b in a[0] %}
-          <td><h4>{{ b }}</h4></td>
-          {% endfor %}
-          {% for c in a[1] %}
-          <td><h4>{{ c }}</h4></td>
-          {% endfor %}
+      <td>
+      <table border="1">
+            <tr>
+                <td><b><h3><div class="alert alert-success" role="alert">Posibles títulos</div></h3></b></td>
+            <tr>
+            {% for pos in posible %}
+            <tr>
+             <td><h5>{{ pos }}<h5></td>
+             </tr>
+             {% endfor %}
+      
+      </table>
+      </td>
+      <td>
+
+      <table>
+         <tr>
+             <td><center><b><h3><div class="alert alert-primary" role="alert">Nombre Original</div></h3></b></center></td>
+         </tr>
+         <tr>
+             <td><h5>{{ music[0] }}</h5></td>
+         </tr>
+      </ttd>
       </tr>
-          {% endfor %}
-          {% endif %}
+  </table>
+  {% endif %}
           {% if exito == 0 %}
           <center><h2>No pudimos encontrar tus titulos</h2></center>
           {% endif %}

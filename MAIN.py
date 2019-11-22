@@ -79,14 +79,4 @@ def BuscarCancion(path):
 
 
 
-a0 = BuscarCancion("c2.mp3")
-url = a0[0][2]
-query = a0[0][3]
-comparar = pj.Comparacion(url,query)
-topic = pj.topicM(comparar[0])
-for i in range(3):
-    print(topic[i][1])
-
-
-
 

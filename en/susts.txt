@@ -1,0 +1,200 @@
+action	acción
+age	edad
+air	aire
+animal	animal
+answer	respuesta
+apple	manzana
+art	arte
+baby	bebé
+back	espalda
+ball	bola, pelota
+bank	banco
+bed	cama
+bill	factura
+bird	pájaro
+blood	sangre
+boat	barco
+body	cuerpo
+bone	hueso
+book	libro
+bottom	fondo, parte bajo
+box	caja
+boy	niño (masculino)
+brother	hermano
+building	edificio
+business	negocio
+call	llamada
+capital	capital
+case	caso, estuche
+cat	gato
+cause	causa
+cent	céntimo
+center	centro
+century	siglo
+chance	oportunidad
+change	cambio
+check	cheque
+child (pl children)	niño
+church	iglesia
+circle	círculo
+city	ciudad
+class	clase, curso
+clothes	ropa
+cloud	nube
+coast	costa
+color	color
+company	empresa
+consonant	consonante
+copy	copia
+corn	maíz
+cotton	algodón
+country	país, campo
+course	curso
+cow	vaca
+crowd	multitud
+day	día
+dictionary	diccionario
+direction	dirección
+distance	distancia
+doctor	médico
+dollar	dólar
+door	puerta
+ear	oreja
+earth	tierra
+egg	huevo
+energy	energía
+example	ejemplo
+experience	experiencia
+eye	ojo
+game	juego, partido
+garden	jardín
+gas	carburante
+girl	chica, niña
+glass	vidrio, vaso
+gold	oro
+government	gobierno
+grass	hierba, césped
+group	grupo
+hair	pelo
+hand	mano
+hat	sombrero
+head	cabeza
+heart	corazón
+heat	calor, calefacción
+history	historia
+hole	agujero, hueco
+home	casa, hogar
+horse	caballo
+hour	hora
+house	casa
+ice	hielo
+idea	idea
+inch	pulgada
+industry	industria
+information	información
+insect	insecto
+interest	interés
+iron	hierro, plancha
+island	isla
+job	puesto de trabajo
+key	llave
+lake	lago
+land	tierra
+language	idioma
+law	ley
+leg	pierna
+level	nivel
+lie	mentira
+life	vida
+light	luz
+line	línea
+list	lista
+machine	máquina
+man (pl men)	hombre
+map	mapa
+material	material
+meat	carne
+middle	medio
+mile	milla
+milk	leche
+mind	mente
+minute	minuto
+money	dinero
+month	mes
+moon	luna
+mouth	boca
+music	música
+nation	nación
+night	noche
+nose	nariz
+note	nota
+number	número
+object	objeto
+ocean	océano
+office	oficina
+oil	aceite, petróleo
+page	página
+pair	par
+paper	papel
+paragraph	párrafo
+park	parque
+part	parte
+party	fiesta, partido
+past	pasado
+person (pl people)	persona, gente
+pound	libra
+president	presidente
+problem	problema
+product	producto
+property	propiedad
+question	pregunta
+race	carrera
+radio	radio
+rain	lluvia
+reason	razón
+record	récord
+region	región
+ring	anillo
+river	río
+road	camino
+rock	roca
+row	fila
+rule	regla
+sand	arena
+school	escuela
+science	ciencia
+sea	mar
+seat	asiento
+second	segundo
+sentence	frase
+set	set, serie
+side	lado
+sign	señal, signo
+sister	hermana
+size	talla, tamaño
+skin	piel
+snow	nieve
+soldier	soldado
+solution	solución
+son	hijo (masculino)
+spring	primavera
+square	cuadrado, plaza
+star	estrella
+state	estado
+stop	parada
+street	calle
+student	estudiante
+sugar	azúcar
+sun	sol
+village	pueblo
+vowel	vocal (a, e, i, o, u)
+war	guerra
+weather	tiempo (clima)
+weight	peso
+wife	esposa
+window	ventana
+winter	invierno
+woman (pl women)	mujer
+word	palabra
+world	mundo
+year

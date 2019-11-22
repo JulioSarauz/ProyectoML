@@ -13,15 +13,16 @@ from playsound import playsound
 import speech_recognition as sr
 import os
 from scipy import spatial
-from scipy import spatial
 recognize = sr.Recognizer()
 #Funciones
 from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
 from gensim import corpora, models
+import random
 import gensim
 from nltk import WordNetLemmatizer
+import LETRAS as lts
 #===========================R EN PYTHON=======================================
 from rpy2.robjects import r
 from rpy2.robjects.packages import importr
@@ -40,21 +41,9 @@ def Rmusic(music):
     r('writeWave(r,"C:/Users/Usuario/Desktop/ProyectoML/canciones/tmp.wav",extensible=FALSE)')
 
 
-
-def jaccard(doc1,doc2):
-    a = set(doc1)
-    b = set(doc2)
-    au=a.union(b)
-    ai=a.intersection(b)
-    if(len(au) == 0):
-        if(len(ai)==0):
-            return 1
-    jac = len(ai)/len(au)
-    return round(jac,1)
-
-
 def vozToText(path):
     t=[]
+    b=""
     ext = path[len(path)-3:len(path)]
     if ext == 'mp3':
         Rmusic(path)
@@ -62,8 +51,7 @@ def vozToText(path):
     if ext == 'wav':
         audioFile = 'canciones/'+path
     if ext == 'txt':
-        archivo = open('canciones/'+path)
-        b=""
+        archivo = open('canciones/'+path)     
         for a in archivo:
             b = b + a
         return b
@@ -83,6 +71,7 @@ def vozToText(path):
     except Exception as e:
         print("No se pudo entender la cancion")
         print (e)
+    
 
 def clear(documento):
     texto = ''
@@ -235,7 +224,7 @@ def Metodotf(term,v,v2,v3,N):
         i=i+1
         res=[salida,round(z,2)]
     return res
-    
+   #----- 
 
 def tf(num):
     if num != 0:
@@ -264,7 +253,7 @@ def inDocument(bow):
         cnt=0    
     return ndoc
             
-   
+#*********   
 
 ##Topic model         
 def lemmatize_stemming(text):
@@ -278,20 +267,22 @@ def preprocess(text):
     return result
 
 def Comparacion(url,query):
-    q = query[0][0]
-    ur = sendCrawlers(url[0])
-    if len(q)<len(ur[3]):
-        dif = len(ur[1]) - len(query[0][0])
-        for i in range(dif):
-            q.append(0)
-    similitud = DCoseno(q,ur[3])
-    similitud = round(similitud,2)
-    print(similitud)
-    if similitud > 0.9:
-        return query
-    if similitud < 0.9:
+    try:
+        q = query[0][0]
+        ur = sendCrawlers(url[0])
+        if len(q)<len(ur[3]):
+            dif = len(ur[1]) - len(query[0][0])
+            for i in range(dif):
+                q.append(0)
+        similitud = DCoseno(q,ur[3])
+        similitud = round(similitud,2)
+        print(similitud)
+        if similitud > 0.9:
+            return query
+        if similitud < 0.9:
+            return url
+    except:
         return url
-
 
 def topicM(url):
     #Paso 1: Tokenizar y se eliminan palabras vacias
@@ -314,26 +305,95 @@ def topicM(url):
     return ld
 
 
+def topicM2(text):
+    #Paso 1: Tokenizar
+    #Paso 2: Se eliminan palabras que tienen menos de 3 caracteres
+    #Paso 3: Todas las palabras vacias se eliminan
+    #Paso 4: Se lematiza 
+    #Paso 5: Se deriva la palabra a su raiz(Snowball)
+    doc2=[]
+    doc = text
+    line=""
+    for d in doc:
+        line = line +d
+    doc2.append(line)
+    texto = preprocess(doc2[0])
+    texto = [texto]
+    dictionary = corpora.Dictionary(texto)
+    corpus = [dictionary.doc2bow(text) for text in texto]
+    ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=3, id2word = dictionary, passes=20)
+    ld = ldamodel.print_topics(num_topics=3, num_words=3)
+    return ld
 
 
 
 
 
+def gettopic(topic):
+    import re
+    import numpy as np
+    tx=[]
+    for t in topic:
+        tx.append(re.sub(r'\d','',t[1]))
+    tx2=[]
+    for t in tx:
+        c = re.sub('[.,"*!@#$ ]', '', t)                  
+        c=c+"+"
+        tx2.append(c)
+    aux=""
+    sa=[]
+    for c in tx2:
+        for r in c:
+            aux = aux + r
+            if r == "+":
+                sa.append(aux)
+                aux=""
+    palabras = []
+    md2=[]
+    for s in sa:
+        palabras.append(s.replace("+",""))
+    
+    div = np.sqrt(len(palabras))
+    div = int(div)
+    
+    for i in range(div):
+        md2.append(palabras[(i*div):(i*div+div)])  
+    return md2
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+def PosibleTitulo(b):
+    posibles=[]
+    ver = lts.getVerbos()
+    pro = lts.getPronombres()
+    art = lts.getArticulos()
+    verbo=[]
+    complemento=b
+    comp=[]
+    
+    
+    for p in b:
+        for p2 in p:
+            for v in ver:
+                if p2 == v:
+                    verbo.append(p2)
+    for p in complemento:
+        for v in verbo:
+            try:
+                p.remove(v)
+            except:
+                print("",end="")
+    print()
+    for c in complemento:
+        for c2 in c:
+            comp.append(c2)
+           
+    for i in range(3):
+        posible = pro[random.randrange(len(pro))]+" "+verbo[random.randrange(len(verbo))]+" "+art[random.randrange(len(art))]+" "+comp[random.randrange(len(complemento))]
+        posibles.append(posible)
+    return posibles
+    
 
 
 

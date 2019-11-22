@@ -1,3 +1,4 @@
+import pandas as pd
 
 def Load():
     urls=[
@@ -16,3 +17,25 @@ def Load():
           "https://www.lyrics.com/lyric/26029754/Carly+Rae+Jepsen/Call+Me+Maybe"
           ]
     return urls
+def getPronombres():
+    pronombres=[
+            "I",
+            "You",
+            "He",
+            "She",
+            "It",
+            "We",
+            "They"
+            ]
+    return pronombres
+
+def getVerbos():
+    verbos=[]
+    verbs = pd.read_csv('en/verbs.csv', sep=';')
+    verb = verbs.get_values()
+    for v in verb:
+        verbos.append(str(v[0]).lower())
+    return verbos
+def getArticulos():
+    articulos=["the","a","one","some","few"]
+    return articulos
