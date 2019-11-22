@@ -14,7 +14,8 @@ def Load():
           "https://www.lyrics.com/lyric/21224985/Big+Time+Rush/Worldwide",
           "https://www.lyrics.com//lyric/32206436/a-ha/Take+on+Me",
           "https://www.lyrics.com/lyric/7715282/Backstreet+Boys/Everybody+%28Backstreet%27s+Back%29+%5BExtended+Version%5D",
-          "https://www.lyrics.com/lyric/26029754/Carly+Rae+Jepsen/Call+Me+Maybe"
+          "https://www.lyrics.com/lyric/26029754/Carly+Rae+Jepsen/Call+Me+Maybe",
+          "https://www.lyrics.com/lyric/31053531/Maroon+5/Sugar"
           ]
     return urls
 def getPronombres():

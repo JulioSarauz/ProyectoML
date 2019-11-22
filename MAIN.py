@@ -3,6 +3,13 @@ import operator
 from collections import Counter
 import FUNCIONES as pj
 import LETRAS as lts
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.metrics import euclidean_distances
+from scipy.spatial import distance_matrix
+from sklearn import manifold
 #-----------------------------------------------------------------------------
 from gensim import corpora, models
 from gensim.utils import simple_preprocess
@@ -14,9 +21,10 @@ np.random.seed(2018)
 import nltk
 #-----------------------------------------------------------------------------                               
 #pj.ModAudioR('hooa')
-
+from time import time #importamos la función time para capturar tiempos  
 #entrada = pj.vozToText("r1.mp3")
 def BuscarCancion(path):
+    tiempo_inicial = time() 
     audio=[]
     entrada = pj.vozToText(path)
     entrada2 = list(entrada.split())
@@ -37,7 +45,8 @@ def BuscarCancion(path):
             doc = doc.split()
             ide=ide+1
             fc = pj.frecuencia(query,doc)
-            bow.append(fc)
+            bow.append(fc) #BOLAS DE PALABRAS <----
+
     for b in range(len(bow)):
             t = query #Terminos de la consulta   
             v = freqT#frecuencia del termino en la consulta
@@ -72,7 +81,10 @@ def BuscarCancion(path):
                 b = str(resultado[rak][1])+"%"
                 aux0 = [[a],[b],[topurls[0]],[audio]]
                 recomendadas.append(aux0)
-        pj.recommend(rankin[0])
+        pj.recommend(rankin[0])        
+        tiempo_final = time() 
+        tiempo_ejecucion = tiempo_final - tiempo_inicial
+        print ('\n\nEl tiempo de ejecucion fue:',tiempo_ejecucion," segundos") #En segundos
     return recomendadas
 
 
